@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Princess Jane D. Raagas | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:     #e8a0bf;
+      --rose2:    #d4729e;
+      --blush:    #fce4ec;
+      --gold:     #d4af37;
+      --gold2:    #c9a030;
+      --dark:     #1a1016;
+      --dark2:    #2a1a22;
+      --dark3:    #3a2832;
+      --panel:    rgba(232, 160, 191, 0.05);
+      --border:   rgba(232, 160, 191, 0.15);
+      --text:     #f0e6ea;
+      --muted:    #b895a4;
+      --glow:     0 0 24px rgba(232, 160, 191, 0.25);
+      --glow-gold: 0 0 24px rgba(212, 175, 55, 0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Subtle Pattern ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle at 25px 25px, rgba(232, 160, 191, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── MINIMAL CORNER IMAGE ── */
+    .corner-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      max-width: 360px;
+      margin: 1.1rem auto 0;
+    }
+
+    .corner-mini-image {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid rgba(232, 160, 191, 0.25);
+      box-shadow: 0 0 18px rgba(232, 160, 191, 0.16);
+      opacity: 0.88;
+      flex-shrink: 0;
+      cursor: zoom-in;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    .corner-mini-image:hover {
+      transform: scale(1.12);
+      opacity: 1;
+    }
+
+    .corner-logo-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      line-height: 1.45;
+      letter-spacing: 1px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .corner-logo-text strong {
+      display: block;
+      color: var(--rose);
+      font-size: 0.68rem;
+    }
+
+    /* ── PREMIUM PARTICLE BACKGROUND ── */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particles::before {
+      content: '';
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      top: 18%;
+      right: -160px;
+      background: radial-gradient(circle, rgba(232,160,191,0.18), transparent 68%);
+      filter: blur(8px);
+      animation: auroraDrift 14s ease-in-out infinite alternate;
+    }
+
+    .particles::after {
+      content: '';
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      bottom: 5%;
+      left: -150px;
+      background: radial-gradient(circle, rgba(212,175,55,0.14), transparent 70%);
+      filter: blur(10px);
+      animation: auroraDrift 18s ease-in-out infinite alternate-reverse;
+    }
+
+    .particles span {
+      position: absolute;
+      bottom: -90px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff 0%, var(--rose) 35%, transparent 72%);
+      box-shadow: 0 0 28px rgba(232, 160, 191, 0.75);
+      opacity: 0.75;
+      animation: particleFloat linear infinite;
+    }
+
+    .particles span::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 2px;
+      height: 78px;
+      transform: translateX(-50%) translateY(0);
+      background: linear-gradient(to bottom, rgba(232, 160, 191, 0.62), transparent);
+      border-radius: 999px;
+      filter: blur(1px);
+      opacity: 0.75;
+    }
+
+    .particles span:nth-child(2)::after,
+    .particles span:nth-child(5)::after,
+    .particles span:nth-child(8)::after,
+    .particles span:nth-child(12)::after {
+      background: linear-gradient(to bottom, rgba(212, 175, 55, 0.62), transparent);
+    }
+
+    .particles span:nth-child(1) { left: 6%;  animation-duration: 14s; animation-delay: 0s;  width: 8px; height: 8px; }
+    .particles span:nth-child(2) { left: 14%; animation-duration: 20s; animation-delay: 2s;  width: 13px; height: 13px; background: radial-gradient(circle, #fff 0%, var(--gold) 38%, transparent 72%); box-shadow: 0 0 30px rgba(212,175,55,0.75); }
+    .particles span:nth-child(3) { left: 23%; animation-duration: 16s; animation-delay: 5s;  width: 7px; height: 7px; }
+    .particles span:nth-child(4) { left: 34%; animation-duration: 24s; animation-delay: 1s;  width: 12px; height: 12px; }
+    .particles span:nth-child(5) { left: 46%; animation-duration: 18s; animation-delay: 4s;  width: 9px; height: 9px; background: radial-gradient(circle, #fff 0%, var(--gold) 38%, transparent 72%); box-shadow: 0 0 30px rgba(212,175,55,0.75); }
+    .particles span:nth-child(6) { left: 58%; animation-duration: 22s; animation-delay: 2s;  width: 15px; height: 15px; }
+    .particles span:nth-child(7) { left: 69%; animation-duration: 15s; animation-delay: 7s;  width: 7px; height: 7px; }
+    .particles span:nth-child(8) { left: 82%; animation-duration: 26s; animation-delay: 3s;  width: 12px; height: 12px; background: radial-gradient(circle, #fff 0%, var(--gold) 38%, transparent 72%); box-shadow: 0 0 30px rgba(212,175,55,0.75); }
+    .particles span:nth-child(9) { left: 92%; animation-duration: 17s; animation-delay: 8s;  width: 8px; height: 8px; }
+    .particles span:nth-child(10){ left: 76%; animation-duration: 19s; animation-delay: 10s; width: 10px; height: 10px; }
+    .particles span:nth-child(11){ left: 28%; animation-duration: 27s; animation-delay: 12s; width: 14px; height: 14px; }
+    .particles span:nth-child(12){ left: 63%; animation-duration: 21s; animation-delay: 13s; width: 6px; height: 6px; background: radial-gradient(circle, #fff 0%, var(--gold) 38%, transparent 72%); box-shadow: 0 0 30px rgba(212,175,55,0.75); }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.65);
+        opacity: 0;
+      }
+      12% { opacity: 0.8; }
+      50% { transform: translateY(-55vh) translateX(45px) scale(1.15); }
+      100% {
+        transform: translateY(-112vh) translateX(-35px) scale(0.8);
+        opacity: 0;
+      }
+    }
+
+    @keyframes auroraDrift {
+      from { transform: translateY(0) translateX(0) scale(1); }
+      to { transform: translateY(-40px) translateX(35px) scale(1.12); }
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(26, 16, 22, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--rose);
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover { color: var(--rose); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 80px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-visual {
+      justify-self: center;
+      width: min(380px, 100%);
+    }
+
+    .hero-photo {
+      width: min(360px, 100%);
+      aspect-ratio: 1 / 1.18;
+      justify-self: center;
+      border-radius: 26px;
+      padding: 6px;
+      background: linear-gradient(135deg, var(--rose), var(--gold));
+      box-shadow: var(--glow), var(--glow-gold);
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      transition: transform 0.45s ease;
+    }
+
+    .hero-photo:hover img {
+      transform: scale(1.08);
+    }
+
+    .hero-photo {
+      cursor: zoom-in;
+    }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(10, 5, 9, 0.88);
+      backdrop-filter: blur(14px);
+    }
+
+    .image-lightbox.active {
+      display: flex;
+    }
+
+    .image-lightbox img {
+      max-width: min(92vw, 900px);
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 24px;
+      border: 2px solid rgba(232, 160, 191, 0.35);
+      box-shadow: 0 0 60px rgba(232, 160, 191, 0.38);
+      animation: lightboxZoom 0.25s ease both;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(232, 160, 191, 0.35);
+      border-radius: 50%;
+      background: rgba(232, 160, 191, 0.08);
+      color: var(--rose);
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .lightbox-close:hover {
+      background: var(--rose);
+      color: var(--dark);
+      transform: rotate(90deg);
+    }
+
+    @keyframes lightboxZoom {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .hero-greeting {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      margin-left: 180px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-greeting span {
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-name .highlight {
+      background: linear-gradient(135deg, var(--rose), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-bio {
+      max-width: 580px;
+      margin-top: 1.8rem;
+      font-size: 1rem;
+      color: #c9b0bc;
+      line-height: 2;
+      font-weight: 300;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 30px;
+      border: 1.5px solid var(--rose);
+      background: transparent;
+      color: var(--rose);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--rose), var(--gold));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn:hover::before { opacity: 1; }
+    .btn:hover { color: var(--dark); border-color: transparent; }
+
+    .btn span { position: relative; z-index: 1; }
+
+    .btn-ghost {
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    .btn-ghost::before { background: rgba(232, 160, 191, 0.1); }
+    .btn-ghost:hover { color: var(--rose); }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── PANEL / CARD ── */
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .panel:hover {
+      border-color: var(--rose);
+      box-shadow: var(--glow);
+      transform: translateY(-2px);
+    }
+
+    .panel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--rose);
+      margin-bottom: 0.75rem;
+    }
+
+    .panel p {
+      color: #c9b0bc;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .panel p:last-child { margin-bottom: 0; }
+
+    .panel .highlight-text {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background: rgba(232, 160, 191, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--glow-gold);
+      transform: translateY(-3px);
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--rose);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── ABOUT STATS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-box {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      background: var(--panel);
+      transition: all 0.3s ease;
+    }
+
+    .stat-box:hover {
+      border-color: var(--gold);
+      box-shadow: var(--glow-gold);
+      transform: translateY(-2px);
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--rose), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* ── PROJECTS ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--rose);
+      box-shadow: var(--glow);
+      transform: translateY(-3px);
+    }
+
+    .project-card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 3px;
+      align-self: flex-start;
+    }
+
+    .project-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      color: #c9b0bc;
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-card-link {
+      margin-top: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--rose);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-card-link:hover { color: var(--gold); }
+
+    /* ── DOWNLOAD SECTION ── */
+    .download-area {
+      text-align: center;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .download-area:hover {
+      border-color: var(--gold);
+      box-shadow: var(--glow-gold);
+    }
+
+    .download-area p {
+      color: #c9b0bc;
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-download {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 4px;
+      background: linear-gradient(135deg, var(--rose), var(--gold));
+      color: var(--dark);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .btn-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(232, 160, 191, 0.4);
+    }
+
+    .download-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.1rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .contact-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--glow-gold);
+      transform: translateY(-2px);
+    }
+
+    .contact-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .contact-card-value {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+
+    .contact-card-value a {
+      color: var(--rose);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-card-value a:hover { color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 2px;
+    }
+
+    footer .heart {
+      color: var(--rose);
+      display: inline-block;
+      animation: pulse 1.5s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rose), var(--gold), transparent);
+      margin: 0.5rem 0 2rem;
+      opacity: 0.3;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* ── ORNAMENT ── */
+    .ornament {
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--gold);
+      opacity: 0.3;
+      margin: 1.5rem 0;
+      letter-spacing: 12px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      section { padding: 5rem 1.25rem; }
+      .hero-layout { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+      .hero-greeting { margin-left: 0; }
+      .hero-visual { order: -1; width: min(300px, 90vw); }
+      .hero-photo { width: 100%; }
+      .corner-logo { align-items: flex-start; text-align: left; }
+      .hero-cta { justify-content: center; }
+      .hero-name { font-size: clamp(2rem, 10vw, 3rem); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+  <button class="lightbox-close" id="closeLightbox" aria-label="Close image">&times;</button>
+  <img src="princess-jane-profile.png" alt="Princess Jane Diaz Raagas full view" />
+</div>
+
+<div class="image-lightbox" id="logoLightbox" aria-hidden="true">
+  <button class="lightbox-close" id="closeLogoLightbox" aria-label="Close logo">&times;</button>
+  <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAjHWSxBCU7qqs1EfYBXCXIflWFcp6KkbzbAoZDTpQ7DCFAbUycBBVPSAJVMrFD2lQNQA2La_XmcayADPZ-NzK-Bph8a327Jf4C8T1DlJOtoqCkhiKn3gSmyjH-STCt4We_1nNLmSGr5jxnceEDzJjDThdWskkLX1ggCsO2M5_WE-f5_RdHup46yg3TpLzIkCsv1R8xv1-K9NPYlnOGy6cU8t0lPK0I6_0H=w1280" alt="College of Education logo full view" />
+</div>
+
+<div class="particles" aria-hidden="true">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">PJ <span>✦</span> Raagas</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-layout">
+    <div class="hero-content">
+      <p class="hero-greeting"><span></span> Welcome to my portfolio</p>
+      <h1 class="hero-name">
+        Princess Jane<br/>
+        Diaz <span class="highlight">Raagas</span>
+      </h1>
+      <p class="hero-title">Creative Mind &nbsp;·&nbsp; Passionate Learner</p>
+      <p class="hero-bio">
+        A dedicated student with a love for creativity, technology, and continuous growth.
+        Every project is a new story — and this is where I share mine. Let's build
+        something beautiful together.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn"><span>View My Work</span></a>
+        <a href="#contact" class="btn btn-ghost"><span>Get In Touch</span></a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-photo" id="openLightbox">
+        <img src="princess-jane-profile.png" alt="Princess Jane Diaz Raagas" />
+      </div>
+
+      <div class="corner-logo">
+  <img id="openLogoLightbox" class="corner-mini-image" src="https://lh3.googleusercontent.com/sitesv/AA5AbUAjHWSxBCU7qqs1EfYBXCXIflWFcp6KkbzbAoZDTpQ7DCFAbUycBBVPSAJVMrFD2lQNQA2La_XmcayADPZ-NzK-Bph8a327Jf4C8T1DlJOtoqCkhiKn3gSmyjH-STCt4We_1nNLmSGr5jxnceEDzJjDThdWskkLX1ggCsO2M5_WE-f5_RdHup46yg3TpLzIkCsv1R8xv1-K9NPYlnOGy6cU8t0lPK0I6_0H=w1280" alt="College of Education logo" />
+  <div class="corner-logo-text">
+    <strong>College of Education</strong>
+    Bachelor of Technology and Livelihood Education<br />
+    Major in Industrial Arts
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <p class="section-tag">01 &nbsp;// Profile</p>
+    <h2 class="section-title">About Me</h2>
+  </div>
+  <div class="divider"></div>
+
+  <div class="panel">
+    <p>
+      Hello! I'm <strong class="highlight-text">Princess Jane Diaz Raagas</strong>, 
+      a passionate and driven individual who believes in the power of creativity 
+      and hard work. I'm currently pursuing my studies with a focus on 
+      <strong class="highlight-text">technology and design</strong>, always 
+      looking for ways to learn, grow, and make a meaningful impact.
+    </p>
+    <p>
+      Whether it's building a website, designing a project, or collaborating 
+      with a team, I bring my best self to everything I do. My journey is 
+      about turning ideas into reality — one step at a time.
+    </p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box">
+      <span class="stat-value">✦</span>
+      <span class="stat-label">Creative</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-value">💡</span>
+      <span class="stat-label">Problem Solver</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-value">🎯</span>
+      <span class="stat-label">Goal Oriented</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-value">🌱</span>
+      <span class="stat-label">Always Learning</span>
+    </div>
+  </div>
+
+  <div class="ornament">✦ ✦ ✦</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <p class="section-tag">02 &nbsp;// Expertise</p>
+    <h2 class="section-title">Skills</h2>
+  </div>
+  <div class="divider"></div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">Web Development</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-name">Design &amp; Layout</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Responsive Design</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💬</div>
+      <div class="skill-name">Communication</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-name">Teamwork</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📖</div>
+      <div class="skill-name">Fast Learner</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <p class="section-tag">03 &nbsp;// Portfolio</p>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="divider"></div>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <span class="project-card-tag">Web</span>
+      <div class="project-card-title">Personal Portfolio</div>
+      <p>
+        This very website! A fully responsive portfolio built to showcase 
+        my skills, projects, and personal brand. Designed with a soft, modern 
+        aesthetic and clean code.
+      </p>
+      <a href="#" class="project-card-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-card-tag">Design</span>
+      <div class="project-card-title">Creative Layouts</div>
+      <p>
+        Exploring visual design through typography, color theory, and layout 
+        composition. Crafting interfaces that are both beautiful and functional.
+      </p>
+      <a href="#" class="project-card-link">View Project →</a>
+      <a href="PRINCESS TTL2.pptx" class="btn-download" download style="margin-top: 0.75rem; padding: 8px 16px; font-size: 0.65rem;">
+        📥 Download PPT
+      </a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-card-tag">Excel</span>
+      <div class="project-card-title">Class Record Excel</div>
+      <p>
+        A downloadable class record spreadsheet project created in Microsoft Excel,
+        designed to organize student records, grades, and academic information clearly.
+      </p>
+      <a href="Class_Record_EXCEL.xlsx" class="btn-download" download style="margin-top: 0.75rem; padding: 8px 16px; font-size: 0.65rem;">
+        📊 Download Excel Project
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download">
+  <div class="section-header">
+    <p class="section-tag">04 &nbsp;// Resources</p>
+    <h2 class="section-title">Download My Presentation</h2>
+  </div>
+  <div class="divider"></div>
+
+  <div class="download-area">
+    <p>
+      Want to see more? Download my TTL 2 PowerPoint presentation and Class Record
+      Excel project to learn more about my work, projects, and academic journey.
+    </p>
+    <div class="download-buttons">
+      <a href="PRINCESS TTL2.pptx" class="btn-download" download>
+        📥 Download PPT
+      </a>
+      <a href="Class_Record_EXCEL.xlsx" class="btn-download" download>
+        📊 Download Excel Project
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <p class="section-tag">05 &nbsp;// Connect</p>
+    <h2 class="section-title">Get In Touch</h2>
+  </div>
+  <div class="divider"></div>
+
+  <p style="color: #c9b0bc; font-weight: 300; font-size: 0.95rem; max-width: 500px; line-height: 1.9;">
+    I'm always open to new opportunities, collaborations, or just a friendly 
+    hello. Feel free to reach out!
+  </p>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-card-icon">📧</div>
+      <div class="contact-card-label">Email</div>
+      <div class="contact-card-value">
+        <a href="mailto:princessjane@email.com">princessjane@email.com</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">📍</div>
+      <div class="contact-card-label">Location</div>
+      <div class="contact-card-value">Philippines</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">💼</div>
+      <div class="contact-card-label">Open to Work</div>
+      <div class="contact-card-value">Yes — Let's talk!</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed with <span class="heart">♥</span> by Princess Jane Diaz Raagas</p>
+  <p style="margin-top: 0.5rem; opacity: 0.6;">&copy; 2026 All Rights Reserved</p>
+</footer>
+
+  <script>
+    const openLightbox = document.getElementById('openLightbox');
+    const imageLightbox = document.getElementById('imageLightbox');
+    const closeLightbox = document.getElementById('closeLightbox');
+
+    openLightbox.addEventListener('click', () => {
+      imageLightbox.classList.add('active');
+      imageLightbox.setAttribute('aria-hidden', 'false');
+    });
+
+    closeLightbox.addEventListener('click', () => {
+      imageLightbox.classList.remove('active');
+      imageLightbox.setAttribute('aria-hidden', 'true');
+    });
+
+    imageLightbox.addEventListener('click', (event) => {
+      if (event.target === imageLightbox) {
+        imageLightbox.classList.remove('active');
+        imageLightbox.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    const openLogoLightbox = document.getElementById('openLogoLightbox');
+    const logoLightbox = document.getElementById('logoLightbox');
+    const closeLogoLightbox = document.getElementById('closeLogoLightbox');
+
+    openLogoLightbox.addEventListener('click', () => {
+      logoLightbox.classList.add('active');
+      logoLightbox.setAttribute('aria-hidden', 'false');
+    });
+
+    closeLogoLightbox.addEventListener('click', () => {
+      logoLightbox.classList.remove('active');
+      logoLightbox.setAttribute('aria-hidden', 'true');
+    });
+
+    logoLightbox.addEventListener('click', (event) => {
+      if (event.target === logoLightbox) {
+        logoLightbox.classList.remove('active');
+        logoLightbox.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        imageLightbox.classList.remove('active');
+        imageLightbox.setAttribute('aria-hidden', 'true');
+        logoLightbox.classList.remove('active');
+        logoLightbox.setAttribute('aria-hidden', 'true');
+      }
+    });
+  </script>
+</body>
+</html>
